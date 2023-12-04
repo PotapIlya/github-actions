@@ -1,0 +1,16 @@
+name: Custom Runner Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy_on_custom_runner:
+    runs-on: self-hosted  # Использовать собственный runner
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: pwd
