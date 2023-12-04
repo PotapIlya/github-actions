@@ -1,0 +1,19 @@
+image: node:16.3.0
+
+
+.tpl: &tpl
+    project: 'i.burenko/infra/gitlab-ci/templates'
+
+
+include:
+  - { <<: *tpl, file: 'node/setup.yml' }
+  - { <<: *tpl, file: 'node/lint.yml' }
+  - { <<: *tpl, file: 'node/test.yml' }
+  - { <<: *tpl, file: 'build/slim.yml' }
+  - { <<: *tpl, file: 'build/kaniko.yml' }
+  - { <<: *tpl, file: 'base/initialize.yml' }
+
+
+slim:
+  needs:
+    - kaniko
